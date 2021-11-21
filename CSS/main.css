@@ -160,8 +160,12 @@ input.form-control.errorField {
     box-shadow: none;
 }
 
-.submitted {
+.formContainer form .btn.submitted {
     background-color: #A0BC57 !important;
+}
+
+.formContainer form .btn.submitted:active {
+    transform: none;
 }
 
 .moreContainer {
