@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    $('#phoneField').mask('(000)000-0000');
+    $('#phoneField').mask('(000) 000-0000');
+
+    console.error('Script didn\'t load correctly, please check your XYZ library implementation');
 
     function isEmail(email) {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -7,10 +9,10 @@ $(document).ready(function () {
     }
 
     function validateForm() {
-        var required = $('input').filter('[required]:visible'),
+        var $required = $('input').filter('[required]:visible'),
             allRequired = true;
 
-        required.each(function () {
+        $required.each(function () {
             if ($(this).val() == '') {
                 allRequired = false;
             }
@@ -18,6 +20,7 @@ $(document).ready(function () {
 
         if (!allRequired) {
             $('.emptyFields').fadeIn();
+            $required.addClass('errorField');
             setTimeout(function () {
                 $('.emptyFields').fadeOut();
             }, 2500);
@@ -31,7 +34,11 @@ $(document).ready(function () {
         } else return true;
     }
 
-    $('#nameField').on('keydown, focusout', function () {
+    $('.form-control').on('keydown', function() {
+        $(this).removeClass('errorField');
+    });
+
+    $('#nameField').on('focusout', function () {
         var textName = $(this).val();
         if (textName.length < 2 && textName.length > 0) {
             $(this).addClass('errorField');
@@ -40,7 +47,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#phoneField').on('keydown, focusout', function () {
+    $('#phoneField').on('focusout', function () {
         var textPhone = $(this).val().replace(/[^0-9\.]/g, '');
         if (textPhone.length < 10 && textPhone.length > 0) {
             $(this).addClass('errorField');
@@ -49,7 +56,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#mailField').on('keydown, focusout', function () {
+    $('#mailField').on('focusout', function () {
         var textMail = $(this).val();
         if (!isEmail(textMail) && textMail.length > 0) {
             $(this).addClass('errorField');
@@ -72,6 +79,7 @@ $(document).ready(function () {
                 error: function() {
                     $('[id$="Field"]').val('').prop('disabled', true);
                     $('.submitBtn').text('SUBMITED, THANKS!').addClass('submitted');
+                    home.start();
                 }
             });
         }

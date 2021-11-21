@@ -75,6 +75,10 @@ body {
     font-weight: 700;
 }
 
+.logo img {
+    max-width: 150px;
+}
+
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -84,11 +88,11 @@ body {
     background-color: white;
     margin-bottom: 30px;
     padding: 0 !important;
-    box-shadow: 0px 5px 10px rgba(110, 183, 194, 0.3);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .formContainer form {
-    padding: 30px 65px;
+    padding: 30px 65px 65px;
 }
 
 .titleForm {
@@ -115,6 +119,10 @@ body {
     margin: 10px 0 0;
     font-size: 14px;
     color: #D50303;
+    position: absolute;
+    margin: 15px auto 0;
+    left: 0;
+    right: 0;
 }
 
 input.form-control {
@@ -136,6 +144,20 @@ input.form-control.errorField {
     display: block;
     padding: 10px;
     letter-spacing: 1px;
+    transition: all 200ms ease;
+    font-weight: 700;
+}
+
+.formContainer form .btn:hover {
+    background-color: #c07417;
+}
+
+.formContainer form .btn:active {
+    transform: translateY(3px);
+}
+
+.formContainer form .btn:focus {
+    box-shadow: none;
 }
 
 .submitted {
@@ -200,6 +222,14 @@ input.form-control.errorField {
 }
 
 @media (max-width:767px) {
+    header {
+        padding: 10px;
+    }
+
+    .logo img {
+        max-width: 120px;
+    }
+
     .titleContainer h3:before {
         right: 10px;
     }
@@ -214,7 +244,7 @@ input.form-control.errorField {
     }
 
     .titleForm h1 {
-        width: 80%;
+        width: 100%;
     }
 
     .formContainer form .btn {
