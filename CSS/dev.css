@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #313130;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header--sticky {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+}
+
+main {
+    background-color: #F3F9FA;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.container {
+    margin: 0 auto;
+    width: 800px;
+}
+
+.card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 3em auto 0;
+    padding: 20px;
+    width: 80%;
+}
+
+.card-title {
+    margin-bottom: .5em;
+}
+
+.title {
+    margin-top: 3em;
+    margin-bottom: .5em;
+}
+
+p + p {
+    margin-top: 1em;
+}
+
+#imageList {
+    background-color: #e2f0f2;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    padding: 2em;
+}
+
+#imageList img {
+    border: 1px solid #DCDCDC;
+    min-height: 50px;
+    display: block;
+    margin: 1em auto 0;
+    max-height: 400px;
+    max-width: 100%;
+}
+
+.user-item {
+    align-items: center;
+    display: flex;
+    font-size: .9em;
+    list-style: none;
+    margin: 0 0 1em;
+}
+
+.user-info {
+    padding: 1em;
+}
+
+.user-name {
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 1em 2em;
+    
+
+#colorChangeButton {
+    background: #F7931D;
+    color: white;
+}
