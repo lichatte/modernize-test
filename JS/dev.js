@@ -51,9 +51,9 @@ function loadImageList() {
     }
 }
 
-function loadUserList() {
+function loadUserList(page = 1) {
     const users = document.querySelector('#users');
-    fetch('https://reqres.in/api/users?per_page=12')
+    fetch(`https://reqres.in/api/users?per_page=12&page=${page}`)
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -77,26 +77,28 @@ function loadUserList() {
     });
 }
 
-function sayWelcomeBack() {
-    const name = localStorage.getItem('name');
-    const form = document.querySelector('form');
-
-    document.querySelector('#greeting').innerHTML = `Welcome back ${name}`;
-    form.style.display = 'none';
+function onNextPageClick() {
+    const button = document.querySelector('#nextPage')
+    button.addEventListener('click', function() {
+        loadUserList(button.dataset.page);
+        button.dataset.page = button.dataset.page + 1;
+    })
 }
 
 function showGreeting() {
     const name = localStorage.getItem('name');
     const form = document.querySelector('form');
+    const greeting = document.querySelector('#greeting');
     
     if (name) {
-        sayWelcomeBack()
+        greeting.innerHTML = `Welcome back ${name}`;
+        form.style.display = 'none';
     } else {
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
             const data = new FormData(form);
             localStorage.setItem('name', data.get('name'));
-            sayWelcomeBack()
+            greeting.innerHTML = `Welcome back ${name}`;
         });
     }
 }
@@ -107,3 +109,4 @@ onLogoClick();
 loadImageList();
 loadUserList();
 changeColor();
+onNextPageClick();
